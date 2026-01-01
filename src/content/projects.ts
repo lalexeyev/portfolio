@@ -88,4 +88,17 @@ export const projects: Project[] = [
       "Integrated with popular LLM frameworks and libraries",
     ],
   },
+  {
+    slug: "ems-scheduling",
+    title: "EMS Scheduling Website",
+    year: "2025",
+    stack: ["React"],
+    links: [
+      { label: "GitHub", href: "https://github.com/lalexeyev/2D-Dungeon-Crawler" },
+    ],
+    description: [
+      "Automated tuning of LLM parameters for optimal performance",
+      "Integrated with popular LLM frameworks and libraries",
+    ],
+  },
 ];
