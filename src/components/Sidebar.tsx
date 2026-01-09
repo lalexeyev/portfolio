@@ -17,10 +17,9 @@ export default function Sidebar() {
                 </p>
             </div>
         </div>
-        <div className="grid grid-rows-3 justify-items-start gap-y-6">
+        <div className="grid grid-rows-2 justify-items-start gap-y-6">
             <span className="text-center text-3xl">About Me</span>
             <span className="text-center text-3xl">Projects</span>
-            <span className="text-center text-3xl">Contact</span>
         </div>
         <div className="grid grid-cols-3 gap-10">
             <a href="https://github.com/lalexeyev" target="_blank" rel="noopener noreferrer">

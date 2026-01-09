@@ -9,6 +9,7 @@ export default function ProjectCard({ project }: { project: Project }) {
     >
       <div className="flex items-start justify-between gap-4">
         <h3 className="text-lg font-semibold">{project.title}</h3>
+        <span className="text-sm">{project.semester} {project.year}</span>
       </div>
 
       <p className="mt-1 text-sm">{project.description}</p>

@@ -1,6 +1,11 @@
 import { projects } from "@/content/projects";
 import ProjectCard from "@/components/ProjectCard";
 
+const semesterOrder = {
+  "Spring": 1,
+  "Fall": 2,
+}
+
 export default function Home() {
   return (
     <div className="flex flex-col pt-16 px-6 gap-y-15 pb-16">
@@ -12,7 +17,10 @@ export default function Home() {
       </section>
       <section id="projects">
         <div className="grid grid-cols-2 gap-4">
-          {projects.map((project) => (
+          {[...projects].sort((a, b) => {
+            if (a.year !== b.year) return b.year - a.year;
+            return semesterOrder[b.semester] - semesterOrder[a.semester];
+          }).map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
