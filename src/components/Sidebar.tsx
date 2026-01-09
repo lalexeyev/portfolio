@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 
 export default function Sidebar() {
@@ -18,8 +19,8 @@ export default function Sidebar() {
             </div>
         </div>
         <div className="grid grid-rows-2 justify-items-start gap-y-6">
-            <span className="text-center text-3xl">About Me</span>
-            <span className="text-center text-3xl">Projects</span>
+            <Link href="/#about" className="text-center text-3xl hover:underline">About Me</Link>
+            <Link href="/#projects" className="text-center text-3xl hover:underline">Projects</Link>
         </div>
         <div className="grid grid-cols-3 gap-10">
             <a href="https://github.com/lalexeyev" target="_blank" rel="noopener noreferrer">
