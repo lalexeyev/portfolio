@@ -33,13 +33,22 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </a>
         )}
 
-        {project.links?.paper && (
-          <a href={project.links.paper} target="_blank" rel="noopener noreferrer" className="flex flex-row gap-2">
+        {project.links?.report && (
+          <a href={project.links.report} target="_blank" rel="noopener noreferrer" className="flex flex-row gap-2">
             <Image src="/report.svg" alt="Report Logo Logo" width={30} height={30} />
             <span className="text-xl underline place-self-center">View Report</span>
           </a>
         )}
 
+        {project.links?.demo && (
+          <div className="w-full max-w-3xl aspect-video rounded-md overflow-hidden border">
+            <video
+              src={project.links.demo}
+              controls
+              className="w-full h-full object-contain"
+            />
+          </div>
+        )}
 
         <div className="space-y-8">
           {project.sections.map((section, index) => {
