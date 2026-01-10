@@ -15,6 +15,7 @@ export default function Home() {
         <p>I've also been involved in teaching, both in academic and recreational settings. During my time as an undergraduate, I was a teaching assistant for a class on computer architecture and networking (Systems and Networks - CS 2200), where I would hold office hours, help design and grade course material, and teach a lab reinforcing content for 2 hours to a group of 30-40 students. I continued being a teaching assistant during my M.S. for a class on robot sensing and control (Robotics and Perception - CS 3630), where I took lead on the creation and facilitation of multiple projects and quizzes for the class, as well as held a tutorial on probability and statistics for the class of 200+ students. Outside of the classroom, I am heavily involved in the Outdoor Recreation Georgia Tech (ORGT) program, where I have assisted or directly led ~20 weekend overnight sea kayaking trips for students, as well as multi-week expeditions to Alaska and Norway.</p>
         <p>In my spare time, I'm usually playing tennis, biking, or watching whatever new movies came out this year!</p>
       </section>
+      
       <section id="projects">
         <div className="grid grid-cols-2 gap-4">
           {[...projects].sort((a, b) => {
