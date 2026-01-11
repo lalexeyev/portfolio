@@ -42,11 +42,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
         {project.links?.demo && (
           <div className="w-full max-w-3xl aspect-video rounded-md overflow-hidden border">
-            <video
-              src={project.links.demo}
-              controls
-              className="w-full h-full object-contain"
-            />
+            <div className="video-cover w-full h-full">
+              <iframe src={project.links.demo} className="w-full h-full" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+            </div>
           </div>
         )}
 
