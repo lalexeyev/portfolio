@@ -1,6 +1,8 @@
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // add metadata for site
 export const metadata: Metadata = {
@@ -17,6 +19,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Sidebar />
           <main id="main-scroll" className="h-screen w-1/2 overflow-y-auto scroll-smooth">
             {children}
+            <Analytics />
+            <SpeedInsights />
           </main>
         </div>
       </body>
