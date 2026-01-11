@@ -8,7 +8,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="h-screen w-screen overflow-hidden">
         <div className="flex h-full">
           <Sidebar />
-          <main className="w-1/2 overflow-y-auto">
+          <main id="main-scroll" className="h-screen w-1/2 overflow-y-auto scroll-smooth">
             {children}
           </main>
         </div>
