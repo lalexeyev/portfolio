@@ -1,7 +1,7 @@
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 
-{ /* root layout which contains sidebar component and main content area (page.tsx) */ }
+//root layout which contains sidebar component and main content area (page.tsx)
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
