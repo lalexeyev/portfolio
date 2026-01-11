@@ -35,7 +35,7 @@ export default function Sidebar() {
                 <p className="mt-1 text-lg max-w-xs leading-snug justify-center">
                     M.S. Machine Learning<br />
                     B.S. Computer Science<br />
-                    @ Georgia Tech
+                    @ Georgia Tech🐝
                 </p>
             </div>
         </div>
