@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image"
+import { useRouter, usePathname } from "next/navigation";
 
 // function to scroll to section
 function scroll(id: string) {
@@ -16,12 +17,25 @@ function scroll(id: string) {
         behavior: "smooth",
     })
 
-    //update the url hash
-    window.history.replaceState(null, "", `/#${id}`);
+    // update the url hash
+    window.location.hash = id;
 }
 
 // sidebar component which always persists on the left side of the webpage
 export default function Sidebar() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  // address firefox bug by checking if on home page before scrolling, otherwise navigate to home page
+  const handleNavigation = (sectionId: string) => {
+    if (isHome) {
+      scroll(sectionId);
+    } else {
+      router.push(`/#${sectionId}`);
+    }
+  };
+
   return (
     // include logic for high zoom, add a scrollable if thats the case, use rtl and ltr swap to have scroll on left
     <aside className="w-1/2 flex justify-center items-center flex-col gap-y-20 pt-16 pb-16 px-10 h-screen overflow-y-auto [direction:rtl]">
@@ -40,9 +54,9 @@ export default function Sidebar() {
             </div>
         </div>
         {/* navigational links using hashes */}
-        <div className="grid grid-rows-2 justify-items-start gap-y-6 [direction:ltr]">
-            <a href="/#about" onClick={() => scroll("about")} className="text-center text-3xl hover:underline">About Me</a>
-            <a href="/#projects" onClick={() => scroll("projects")} className="text-center text-3xl hover:underline">Projects</a>
+        <div className="grid grid-rows-2 justify-items-start gap-y-6">
+            <a href="#" onClick={(e) => {e.preventDefault(); handleNavigation("about");}} className="text-center text-3xl hover:underline">About Me</a>
+            <a href="#" onClick={(e) => {e.preventDefault(); handleNavigation("projects");}} className="text-center text-3xl hover:underline">Projects</a>
         </div>
         {/* github, linkedin, resume links */}
         <div className="grid grid-cols-3 gap-10 [direction:ltr]">
