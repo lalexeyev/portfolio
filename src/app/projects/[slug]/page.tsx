@@ -1,4 +1,6 @@
 import { projects } from "@/content/projects";
+import LandscapeYouTubeEmbed from "@/components/LandscapeYouTubeEmbed";
+import PortraitYouTubeEmbed from "@/components/PortraitYouTubeEmbed";
 import Image from "next/image";
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }>}) {
@@ -41,11 +43,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         )}
 
         {project.links?.demo && (
-          <div className="w-full max-w-3xl aspect-video rounded-md overflow-hidden border">
-            <div className="video-cover w-full h-full">
-              <iframe src={project.links.demo} className="w-full h-full" allow="autoplay; encrypted-media" allowFullScreen></iframe>
-            </div>
-          </div>
+          project.demoAspect === "portrait" ? (
+            <PortraitYouTubeEmbed url={project.links.demo} />
+          ) : (
+            <LandscapeYouTubeEmbed url={project.links.demo} />
+          )
         )}
 
         <div className="space-y-8">
