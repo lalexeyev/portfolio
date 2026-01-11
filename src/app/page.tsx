@@ -18,7 +18,7 @@ export default function Home() {
           href="https://www.qgenda.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-400 hover:underline"
+          className="text-[#84a98c] hover:underline"
         >
           QGenda
         </a>,
@@ -27,7 +27,7 @@ export default function Home() {
           href="https://www.vip-consortium.org/teams/smart-city-infrastructure"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-400 hover:underline"
+          className="text-[#84a98c] hover:underline"
         >
           research
         </a>
@@ -37,7 +37,7 @@ export default function Home() {
           href="/table-of-contents.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-400 hover:underline"
+          className="text-[#84a98c] hover:underline"
         >
           (Systems and Networks - CS 2200)
         </a>,
@@ -46,7 +46,7 @@ export default function Home() {
           href="https://dellaert.github.io/25F-3630/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-400 hover:underline"
+          className="text-[#84a98c] hover:underline"
         >
           (Robotics and Perception - CS 3630)
         </a>,
@@ -55,7 +55,7 @@ export default function Home() {
           href="https://crc.gatech.edu/orgt_volunteer/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-400 hover:underline"
+          className="text-[#84a98c] hover:underline"
         >
           (ORGT)
         </a> 
