@@ -1,10 +1,31 @@
+"use client";
+
 import Image from "next/image"
-import Link from "next/link"
 
+// function to scroll to section
+function scroll(id: string) {
+    // scroll within right container, to the correct element
+    const container = document.getElementById("main-scroll");
+    const element = document.getElementById(id);
 
+    if (!container || !element) return;
+
+    // set the new id as the top of the screen
+    container.scrollTo({
+        top: element.offsetTop, // pad same as container
+        behavior: "smooth",
+    })
+
+    //update the url hash
+    window.history.replaceState(null, "", `/#${id}`);
+}
+
+// sidebar component which always persists on the left side of the webpage
 export default function Sidebar() {
   return (
-    <aside className="w-1/2 flex justify-center items-center flex-col gap-y-20">
+    // include logic for high zoom, add a scrollable if thats the case
+    <aside className="w-1/2 flex justify-center items-center flex-col gap-y-20 pt-16 pb-16 px-10 h-screen overflow-y-auto">
+        {/* header with name, degree, and picture */}
         <div className="flex items-center gap-6">
             <Image src="/headshot.jpeg" alt="Headshot" width={140} height={140} className="rounded-full" />
             <div className="flex flex-col">
@@ -14,14 +35,16 @@ export default function Sidebar() {
                 <p className="mt-1 text-lg max-w-xs leading-snug justify-center">
                     M.S. Machine Learning<br />
                     B.S. Computer Science<br />
-                    @ Georgia Tech
+                    @ Georgia Tech🐝
                 </p>
             </div>
         </div>
+        {/* navigational links using hashes */}
         <div className="grid grid-rows-2 justify-items-start gap-y-6">
-            <Link href="/#about" className="text-center text-3xl hover:underline">About Me</Link>
-            <Link href="/#projects" className="text-center text-3xl hover:underline">Projects</Link>
+            <a href="/#about" onClick={() => scroll("about")} className="text-center text-3xl hover:underline">About Me</a>
+            <a href="/#projects" onClick={() => scroll("projects")} className="text-center text-3xl hover:underline">Projects</a>
         </div>
+        {/* github, linkedin, resume links */}
         <div className="grid grid-cols-3 gap-10">
             <a href="https://github.com/lalexeyev" target="_blank" rel="noopener noreferrer">
                 <Image src="/github.svg" alt="GitHub" width={40} height={40} />

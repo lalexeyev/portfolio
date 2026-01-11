@@ -1,10 +1,9 @@
-export type Semester = "Spring" | "Fall";
-
+// export an array of project objects, which will be used on a general page.tsx for slugs
 export type Project = {
   slug: string;
   title: string;
   year: number;
-  semester: Semester
+  semester: "Spring" | "Fall";
 
   stack: string[];
   description: string;
@@ -14,6 +13,9 @@ export type Project = {
     demo?: string;
     report?: string;
   }
+
+  // only include with video demo link, descirbe orientation of video
+  demoAspect?: "portrait" | "landscape";
 
   mainImage?: string;
 
@@ -39,6 +41,8 @@ export const projects: Project[] = [
       report: "/projects/hangboard/Documentation.pdf",
       demo: "https://www.youtube.com/embed/-BKcZveDHaE"
     },
+
+    demoAspect: "landscape",
 
     mainImage: "/projects/hangboard/hangboard.jpg",
 
@@ -269,6 +273,8 @@ export const projects: Project[] = [
       demo: "https://www.youtube.com/embed/8KSLnybCT5Y"
     },
 
+    demoAspect: "portrait",
+
     mainImage: "/projects/liftr/logo.png",
       sections: [
       {
@@ -332,8 +338,9 @@ export const projects: Project[] = [
       demo: "https://www.youtube.com/embed/4eD1lzzfbSo",
     },
 
-    mainImage: "/projects/chat-mask/mask.jpg",
+    demoAspect: "portrait",
 
+    mainImage: "/projects/chat-mask/mask.jpg",
     sections: [
       {
         type: "text",
@@ -418,6 +425,8 @@ export const projects: Project[] = [
       demo: "https://www.youtube.com/embed/HQehiIrC8K4",
     },
 
+    demoAspect: "portrait",
+
     mainImage: "/projects/dungeon-crawler/image.JPG",
     sections: [
       {
@@ -460,6 +469,8 @@ export const projects: Project[] = [
       repo: "https://github.com/haroon-shaikh/SchedulingApp",
       demo: "https://www.youtube.com/embed/yADvpR_8U3M"
     },
+
+    demoAspect: "landscape",
 
     sections: [
       {

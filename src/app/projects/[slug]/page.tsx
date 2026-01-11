@@ -1,24 +1,31 @@
 import { projects } from "@/content/projects";
+import LandscapeYouTubeEmbed from "@/components/LandscapeYouTubeEmbed";
+import PortraitYouTubeEmbed from "@/components/PortraitYouTubeEmbed";
 import Image from "next/image";
 
+// project subpage (displays on right main side) which shows detailed project information based on slug
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }>}) {
   try {
+    // pull project from array based on slug param
     const { slug } = await params;
     const project = projects.find((p) => p.slug === slug);
 
+    // check for invalid project
     if (!project) return <div>Project not found</div>;
 
     return (
       <article className="flex flex-col pt-16 pb-16 px-6 gap-6">
         <div className="flex flex-row gap-x-4">
+          {/* display main image if exists */}
           {project.mainImage && (
             <Image src={project.mainImage} alt={`${project.title} main image`} width={100} height={100} className="object-contain rounded-md"/>
           )}
 
+          {/* display title, date, and tech stack as top of page */}
           <div>
             <h1 className="text-4xl font-bold">{project.title}</h1>
             <div className="text-md">{project.semester} {project.year}</div>
-            <div className="flex gap-2 mt-2">
+            <div className="flex gap-2 mt-2 flex-wrap">
               {project.stack.map((tech) => (
                 <span key={tech} className="border text-xs px-2 py-1 rounded-md">{tech}</span>
               ))}
@@ -26,6 +33,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
 
+        {/* if links present, display repository, report and embed demo in page */}
         {project.links?.repo && (
           <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="flex flex-row gap-2">
             <Image src="/github.svg" alt="GitHub Logo" width={30} height={30} />
@@ -41,13 +49,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         )}
 
         {project.links?.demo && (
-          <div className="w-full max-w-3xl aspect-video rounded-md overflow-hidden border">
-            <div className="video-cover w-full h-full">
-              <iframe src={project.links.demo} className="w-full h-full" allow="autoplay; encrypted-media" allowFullScreen></iframe>
-            </div>
-          </div>
+          project.demoAspect === "portrait" ? (
+            <PortraitYouTubeEmbed url={project.links.demo} />
+          ) : (
+            <LandscapeYouTubeEmbed url={project.links.demo} />
+          )
         )}
 
+        {/* render project sections based on type */}
         <div className="space-y-8">
           {project.sections.map((section, index) => {
             if (section.type === "text") {
