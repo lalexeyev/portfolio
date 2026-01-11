@@ -1,5 +1,12 @@
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
+import type { Metadata } from "next";
+
+// add metadata for site
+export const metadata: Metadata = {
+  title: "Leonid Alexeyev",
+  description: "Georgia Tech CS grad student focused on machine learning and full stack development.",
+};
 
 //root layout which contains sidebar component and main content area (page.tsx)
 export default function RootLayout({ children }: { children: React.ReactNode }) {
