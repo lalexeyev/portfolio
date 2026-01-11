@@ -3,6 +3,13 @@ import LandscapeYouTubeEmbed from "@/components/LandscapeYouTubeEmbed";
 import PortraitYouTubeEmbed from "@/components/PortraitYouTubeEmbed";
 import Image from "next/image";
 
+// add slug description to metadata, search for project name based on slug
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  return {
+    title: `${projects.find(async (p) => p.slug === (await params).slug)?.title} — Leonid Alexeyev`,
+  };
+}
+
 // project subpage (displays on right main side) which shows detailed project information based on slug
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }>}) {
   try {
