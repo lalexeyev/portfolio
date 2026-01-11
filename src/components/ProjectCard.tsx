@@ -4,9 +4,10 @@ import type { Project } from "@/content/projects";
 // project card component to display project summary on main page and link to project slug page
 export default function ProjectCard({ project }: { project: Project }) {
   return (
+    // add hover effect to indicate clickability
     <Link
       href={`/projects/${project.slug}`}
-      className="block rounded-lg border p-2"
+      className="block rounded-lg border p-2 hover:bg-[#354f52]"
     >
       {/* general info about project */}
       <div className="flex items-start justify-between gap-4">
