@@ -23,10 +23,10 @@ function scroll(id: string) {
 // sidebar component which always persists on the left side of the webpage
 export default function Sidebar() {
   return (
-    // include logic for high zoom, add a scrollable if thats the case
-    <aside className="w-1/2 flex justify-center items-center flex-col gap-y-20 pt-16 pb-16 px-10 h-screen overflow-y-auto">
+    // include logic for high zoom, add a scrollable if thats the case, use rtl and ltr swap to have scroll on left
+    <aside className="w-1/2 flex justify-center items-center flex-col gap-y-20 pt-16 pb-16 px-10 h-screen overflow-y-auto [direction:rtl]">
         {/* header with name, degree, and picture */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 [direction:ltr]">
             <Image src="/headshot.jpeg" alt="Headshot" width={140} height={140} className="rounded-full" />
             <div className="flex flex-col">
                 <h1 className="text-5xl font-bold leading-tight">
@@ -40,12 +40,12 @@ export default function Sidebar() {
             </div>
         </div>
         {/* navigational links using hashes */}
-        <div className="grid grid-rows-2 justify-items-start gap-y-6">
+        <div className="grid grid-rows-2 justify-items-start gap-y-6 [direction:ltr]">
             <a href="/#about" onClick={() => scroll("about")} className="text-center text-3xl hover:underline">About Me</a>
             <a href="/#projects" onClick={() => scroll("projects")} className="text-center text-3xl hover:underline">Projects</a>
         </div>
         {/* github, linkedin, resume links */}
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-3 gap-10 [direction:ltr]">
             <a href="https://github.com/lalexeyev" target="_blank" rel="noopener noreferrer">
                 <Image src="/github.svg" alt="GitHub" width={40} height={40} />
             </a>
