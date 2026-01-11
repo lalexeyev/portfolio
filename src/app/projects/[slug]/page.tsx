@@ -3,20 +3,25 @@ import LandscapeYouTubeEmbed from "@/components/LandscapeYouTubeEmbed";
 import PortraitYouTubeEmbed from "@/components/PortraitYouTubeEmbed";
 import Image from "next/image";
 
+// project subpage (displays on right main side) which shows detailed project information based on slug
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }>}) {
   try {
+    // pull project from array based on slug param
     const { slug } = await params;
     const project = projects.find((p) => p.slug === slug);
 
+    // check for invalid project
     if (!project) return <div>Project not found</div>;
 
     return (
       <article className="flex flex-col pt-16 pb-16 px-6 gap-6">
         <div className="flex flex-row gap-x-4">
+          {/* display main image if exists */}
           {project.mainImage && (
             <Image src={project.mainImage} alt={`${project.title} main image`} width={100} height={100} className="object-contain rounded-md"/>
           )}
 
+          {/* display title, date, and tech stack as top of page */}
           <div>
             <h1 className="text-4xl font-bold">{project.title}</h1>
             <div className="text-md">{project.semester} {project.year}</div>
@@ -28,6 +33,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
 
+        {/* if links present, display repository, report and embed demo in page */}
         {project.links?.repo && (
           <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="flex flex-row gap-2">
             <Image src="/github.svg" alt="GitHub Logo" width={30} height={30} />
@@ -50,6 +56,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           )
         )}
 
+        {/* render project sections based on type */}
         <div className="space-y-8">
           {project.sections.map((section, index) => {
             if (section.type === "text") {

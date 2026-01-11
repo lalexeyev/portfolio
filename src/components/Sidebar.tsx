@@ -1,10 +1,11 @@
 import Image from "next/image"
 import Link from "next/link"
 
-
+// sidebar component which always persists on the left side of the webpage
 export default function Sidebar() {
   return (
     <aside className="w-1/2 flex justify-center items-center flex-col gap-y-20">
+        {/* header with name, degree, and picture */}
         <div className="flex items-center gap-6">
             <Image src="/headshot.jpeg" alt="Headshot" width={140} height={140} className="rounded-full" />
             <div className="flex flex-col">
@@ -18,10 +19,12 @@ export default function Sidebar() {
                 </p>
             </div>
         </div>
+        {/* navigational links using hashes */}
         <div className="grid grid-rows-2 justify-items-start gap-y-6">
             <Link href="/#about" className="text-center text-3xl hover:underline">About Me</Link>
             <Link href="/#projects" className="text-center text-3xl hover:underline">Projects</Link>
         </div>
+        {/* github, linkedin, resume links */}
         <div className="grid grid-cols-3 gap-10">
             <a href="https://github.com/lalexeyev" target="_blank" rel="noopener noreferrer">
                 <Image src="/github.svg" alt="GitHub" width={40} height={40} />

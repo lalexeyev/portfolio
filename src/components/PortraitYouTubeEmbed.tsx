@@ -2,6 +2,7 @@ type Props = {
   url: string;
 };
 
+// component to embed a portrait youtube video and remove black bars on side
 export default function PortraitYouTubeEmbed({ url }: Props) {
   return (
     <div className="relative w-full max-w-3xs mx-auto aspect-[9/16] overflow-hidden rounded-md">

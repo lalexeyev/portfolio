@@ -1,10 +1,9 @@
-export type Semester = "Spring" | "Fall";
-
+// export an array of project objects, which will be used on a general page.tsx for slugs
 export type Project = {
   slug: string;
   title: string;
   year: number;
-  semester: Semester
+  semester: "Spring" | "Fall";
 
   stack: string[];
   description: string;
@@ -15,6 +14,7 @@ export type Project = {
     report?: string;
   }
 
+  // only include with video demo link, descirbe orientation of video
   demoAspect?: "portrait" | "landscape";
 
   mainImage?: string;
