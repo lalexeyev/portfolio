@@ -4,7 +4,8 @@ import Link from "next/link"
 // sidebar component which always persists on the left side of the webpage
 export default function Sidebar() {
   return (
-    <aside className="w-1/2 flex justify-center items-center flex-col gap-y-20">
+    // include logic for high zoom, add a scrollable if thats the case
+    <aside className="w-1/2 flex justify-center items-center flex-col gap-y-20 pt-16 pb-16 px-10 h-full overflow-y-auto">
         {/* header with name, degree, and picture */}
         <div className="flex items-center gap-6">
             <Image src="/headshot.jpeg" alt="Headshot" width={140} height={140} className="rounded-full" />

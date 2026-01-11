@@ -25,7 +25,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <div>
             <h1 className="text-4xl font-bold">{project.title}</h1>
             <div className="text-md">{project.semester} {project.year}</div>
-            <div className="flex gap-2 mt-2">
+            <div className="flex gap-2 mt-2 flex-wrap">
               {project.stack.map((tech) => (
                 <span key={tech} className="border text-xs px-2 py-1 rounded-md">{tech}</span>
               ))}
