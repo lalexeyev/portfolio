@@ -37,39 +37,45 @@ export default function Sidebar() {
   };
 
   return (
-    // include logic for high zoom, add a scrollable if thats the case, use rtl and ltr swap to have scroll on left
-    <aside className="w-1/2 flex justify-center items-center flex-col gap-y-20 pt-16 pb-16 px-10 h-screen overflow-y-auto [direction:rtl]">
-        {/* header with name, degree, and picture */}
-        <div className="flex items-center gap-6 [direction:ltr]">
-            <Image src="/headshot.jpeg" alt="Headshot" width={140} height={140} className="rounded-full" />
-            <div className="flex flex-col">
-                <h1 className="text-5xl font-bold leading-tight">
-                    Leonid Alexeyev
-                </h1>
-                <p className="mt-1 text-lg max-w-xs leading-snug justify-center">
-                    M.S. Machine Learning<br />
-                    B.S. Computer Science<br />
-                    @ Georgia Tech🐝
-                </p>
+    // create a sidebar to always stay using aside
+    <aside className="w-1/2 h-screen">
+        {/* add zoom logic, and add flipper so that the scrollbar is on the left */}
+        <div className="h-full flex flex-col overflow-y-auto [transform:scaleX(-1)]">
+            {/* reflip after scroll logic so content flows normally */}
+            <div className="my-auto pt-16 pb-16 px-10 flex flex-col items-center gap-y-20 [transform:scaleX(-1)] text-left">
+                {/* headshot and name */}
+                <div className="flex items-center gap-6 w-full justify-center">
+                    <Image src="/headshot.jpeg" alt="Headshot" width={140} height={140} className="rounded-full" />
+                    <div className="flex flex-col">
+                        <h1 className="text-5xl font-bold leading-tight">
+                            Leonid Alexeyev
+                        </h1>
+                        <p className="mt-1 text-lg max-w-xs leading-snug justify-center">
+                            M.S. Machine Learning<br />
+                            B.S. Computer Science<br />
+                            @ Georgia Tech🐝
+                        </p>
+                    </div>
+                </div>
+                {/* navigational links using hashes */}
+                <div className="grid grid-rows-2 justify-items-start gap-y-6">
+                    <a href="#" onClick={(e) => {e.preventDefault(); handleNavigation("about");}} className="text-center text-3xl hover:underline">About Me</a>
+                    <a href="#" onClick={(e) => {e.preventDefault(); handleNavigation("projects");}} className="text-center text-3xl hover:underline">Projects</a>
+                </div>
+                {/* github, linkedin, resume links */}
+                <div className="grid grid-cols-3 gap-10 [direction:ltr]">
+                    <a href="https://github.com/lalexeyev" target="_blank" rel="noopener noreferrer">
+                        <Image src="/github.svg" alt="GitHub" width={40} height={40} />
+                    </a>
+                    <a href="https://www.linkedin.com/in/leonid-alexeyev/" target="_blank" rel="noopener noreferrer">
+                        <Image src="/linkedin.svg" alt="LinkedIn" width={40} height={40} />
+                    </a>
+                    <a href="/Alexeyev_Leonid.pdf" target="_blank" rel="noopener noreferrer">
+                        <Image src="/resume.svg" alt="Resume" width={40} height={40} />
+                    </a>
+                </div>
             </div>
         </div>
-        {/* navigational links using hashes */}
-        <div className="grid grid-rows-2 justify-items-start gap-y-6">
-            <a href="#" onClick={(e) => {e.preventDefault(); handleNavigation("about");}} className="text-center text-3xl hover:underline">About Me</a>
-            <a href="#" onClick={(e) => {e.preventDefault(); handleNavigation("projects");}} className="text-center text-3xl hover:underline">Projects</a>
-        </div>
-        {/* github, linkedin, resume links */}
-        <div className="grid grid-cols-3 gap-10 [direction:ltr]">
-            <a href="https://github.com/lalexeyev" target="_blank" rel="noopener noreferrer">
-                <Image src="/github.svg" alt="GitHub" width={40} height={40} />
-            </a>
-            <a href="https://www.linkedin.com/in/leonid-alexeyev/" target="_blank" rel="noopener noreferrer">
-                <Image src="/linkedin.svg" alt="LinkedIn" width={40} height={40} />
-            </a>
-            <a href="/Alexeyev_Leonid.pdf" target="_blank" rel="noopener noreferrer">
-                <Image src="/resume.svg" alt="Resume" width={40} height={40} />
-            </a>
-        </div>
     </aside>
-    );
+  );
 }
